@@ -1,4 +1,3 @@
-# Component
 class Coffee
   def cost
     2.00
@@ -9,7 +8,6 @@ class Coffee
   end
 end
 
-# Decorator
 class CoffeeDecorator < Coffee
   def initialize(coffee)
     @coffee = coffee
@@ -24,7 +22,6 @@ class CoffeeDecorator < Coffee
   end
 end
 
-# Concrete Decorators
 class Milk < CoffeeDecorator
   def cost
     @coffee.cost + 0.50
@@ -45,19 +42,18 @@ class Sugar < CoffeeDecorator
   end
 end
 
-# Client code
 coffee = Coffee.new
-puts coffee.description #=> "Coffee"
-puts coffee.cost #=> 2.0
+puts coffee.description
+puts coffee.cost
 
 coffee_with_milk = Milk.new(coffee)
-puts coffee_with_milk.description #=> "Coffee, Milk"
-puts coffee_with_milk.cost #=> 2.50
+puts coffee_with_milk.description
+puts coffee_with_milk.cost
 
 coffee_with_sugar = Sugar.new(coffee)
-puts coffee_with_sugar.description #=> "Coffee, Sugar"
-puts coffee_with_sugar.cost #=> 2.25
+puts coffee_with_sugar.description
+puts coffee_with_sugar.cost
 
 coffee_with_milk_and_sugar = Sugar.new(Milk.new(coffee))
-puts coffee_with_milk_and_sugar.description #=> "Coffee, Milk, Sugar"
-puts coffee_with_milk_and_sugar.cost #=> 3.00
+puts coffee_with_milk_and_sugar.description
+puts coffee_with_milk_and_sugar.cost
